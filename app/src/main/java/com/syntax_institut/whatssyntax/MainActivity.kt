@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     var chats = Datasource().getChats()
     var calls = Datasource().getCalls()
     var contacts = Datasource().getContacts()
+    var profile = Datasource().getProfile()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

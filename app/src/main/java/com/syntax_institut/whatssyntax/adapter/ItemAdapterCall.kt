@@ -36,15 +36,42 @@ class ItemAdapterCall(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = datasetCalls[position]
 
-        holder.binding.ivCalls.setImageResource(item.contact.image)
-        if (item.accepted) {
+        holder.binding.ivCallPicture.setImageResource(item.contact.image)
+
+
+
+        if (item.accepted && item.incoming) {
             holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
-        } else {
+            holder.binding.ivArrowCalls.rotation = 180F
+
+        }
+
+        if (item.accepted && !item.incoming) {
+            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
+        }
+
+        if (!item.accepted && item.incoming) {
+            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
+            holder.binding.ivArrowCalls.rotation = 180F
+        }
+
+        if (!item.accepted && !item.incoming) {
             holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
         }
-        holder.binding.tvNamesCall.text = item.contact.name
-        holder.binding.tvDateCalls.text = item.time
 
+        /*if (item.accepted) {
+            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
+            if(item.incoming) {
+                holder.binding.ivArrowCalls.rotation = 180F
+            }
+        } else {
+            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
+            if (item.incoming) {
+                holder.binding.ivArrowCalls.rotation = 180F
+            }
+        }*/
+        holder.binding.tvCallName.text = item.contact.name
+        holder.binding.tvCallMessage.text = item.time
 
     }
 

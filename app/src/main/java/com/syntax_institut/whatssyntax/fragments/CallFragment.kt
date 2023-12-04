@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.syntax_institut.whatssyntax.MainActivity
 import com.syntax_institut.whatssyntax.adapter.ItemAdapterCall
 import com.syntax_institut.whatssyntax.adapter.ItemAdapterChat
@@ -32,6 +34,7 @@ class CallFragment : Fragment() {
         val mainActivity = activity as MainActivity
         var itemAdapter = ItemAdapterCall(mainActivity.calls)
         binding.rvFragmentCall.adapter = itemAdapter
+        binding.rvFragmentCall.layoutManager = LinearLayoutManager(context)
 
 
 
