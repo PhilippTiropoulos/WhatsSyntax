@@ -7,6 +7,9 @@ import com.syntax_institut.whatssyntax.data.model.Contact
 import com.syntax_institut.whatssyntax.data.model.Message
 import com.syntax_institut.whatssyntax.data.model.Profile
 import com.syntax_institut.whatssyntax.data.model.Status
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.Calendar
 
 class Datasource {
 
@@ -58,52 +61,58 @@ class Datasource {
         Call(contactList[19], true, true, "03.10.2023 10:30")
     )
 
+
+    private fun minutesAgo(minutes: Int): Calendar {
+        return Calendar.getInstance().apply {
+            add(Calendar.MINUTE, -minutes)
+        }
+    }
     private val chatList = listOf(
         Chat(contactList[2], mutableListOf(
-            Message("Hallo!", true),
-            Message("Hi, wie geht's?", false),
-            Message("Mir geht's gut, danke!", true)
+            Message("Hallo!", true, minutesAgo(15)),
+            Message("Hi, wie geht's?", false, minutesAgo(12)),
+            Message("Mir geht's gut, danke!", true, minutesAgo(7))
         )
         ),
         Chat(contactList[6], mutableListOf(
-            Message("Bist du heute Abend frei?", false),
-            Message("Ja, was ist los?", true)
+            Message("Bist du heute Abend frei?", false, minutesAgo(20)),
+            Message("Ja, was ist los?", true, minutesAgo(8))
         )),
         Chat(contactList[8], mutableListOf(
-            Message("Wo bist du?", true),
-            Message("Im Büro.", false),
-            Message("Ok, ich bin in 5 Minuten da.", true)
+            Message("Wo bist du?", true, minutesAgo(15)),
+            Message("Im Büro.", false, minutesAgo(12)),
+            Message("Ok, ich bin in 5 Minuten da.", true, minutesAgo(10))
         )),
         Chat(contactList[3], mutableListOf(
-            Message("Vergiss nicht, Milch zu kaufen.", false),
-            Message("Werde ich nicht!", true)
+            Message("Vergiss nicht, Milch zu kaufen.", false, minutesAgo(13)),
+            Message("Werde ich nicht!", true, minutesAgo(12))
         )),
         Chat(contactList[4], mutableListOf(
-            Message("Wie spät ist es?", true),
-            Message("Es ist 18 Uhr.", false)
+            Message("Wie spät ist es?", true, minutesAgo(17)),
+            Message("Es ist 18 Uhr.", false, minutesAgo(14))
         )),
         Chat(contactList[3], mutableListOf(
-            Message("Wann treffen wir uns?", true),
-            Message("Um 17 Uhr.", false),
-            Message("Passt.", true),
-            Message("Super, bis dann!", false)
+            Message("Wann treffen wir uns?", true, minutesAgo(20)),
+            Message("Um 17 Uhr.", false, minutesAgo(18)),
+            Message("Passt.", true, minutesAgo(16)),
+            Message("Super, bis dann!", false, minutesAgo(15))
         )),
         Chat(contactList[5], mutableListOf(
-            Message("Was gibt's zum Abendessen?", true),
-            Message("Pizza.", false)
+            Message("Was gibt's zum Abendessen?", true, minutesAgo(21)),
+            Message("Pizza.", false, minutesAgo(17))
         )),
         Chat(contactList[7], mutableListOf(
-            Message("Treffen wir uns morgen?", true),
-            Message("Ja, klingt gut.", false),
-            Message("Um wie viel Uhr?", true)
+            Message("Treffen wir uns morgen?", true, minutesAgo(27)),
+            Message("Ja, klingt gut.", false, minutesAgo(25)),
+            Message("Um wie viel Uhr?", true, minutesAgo(20))
         )),
         Chat(contactList[8], mutableListOf(
-            Message("Hast du die E-Mail bekommen?", false),
-            Message("Noch nicht, ich schaue nach.", true)
+            Message("Hast du die E-Mail bekommen?", false, minutesAgo(33)),
+            Message("Noch nicht, ich schaue nach.", true, minutesAgo(28))
         )),
         Chat(contactList[1], mutableListOf(
-            Message("Brauchst du etwas?", true),
-            Message("Nein, danke.", false)
+            Message("Brauchst du etwas?", true, minutesAgo(40)),
+            Message("Nein, danke.", false, minutesAgo(35))
         ))
     )
 
