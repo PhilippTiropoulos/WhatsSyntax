@@ -60,6 +60,7 @@ class ItemAdapterCall(
             holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
             holder.binding.ivArrowCalls.rotation = 0f
         }
+        // val dasdas
 
         /*if (item.accepted) {
             holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
