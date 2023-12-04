@@ -1,4 +1,4 @@
-package de.syntax_institut.telefonbuch.ui
+package com.syntax_institut.whatssyntax.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.syntax_institut.whatssyntax.MainActivity
-import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
