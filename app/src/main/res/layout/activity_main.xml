@@ -10,9 +10,9 @@
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/bnwBottomNavBar"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bnwBottomNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
@@ -21,9 +21,9 @@
         android:id="@+id/bnwBottomNavBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu ="@menu/bottom_nav_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

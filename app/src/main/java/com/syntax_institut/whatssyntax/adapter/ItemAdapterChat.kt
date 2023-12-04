@@ -36,6 +36,8 @@ class ItemAdapterChat(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = datasetChats[position]
 
+
+        //val mainActivity = activity as MainActivity
         holder.binding.ivChatPicture.setImageResource(item.contact.image)
         holder.binding.tvChatName.text = item.contact.name
         holder.binding.tvChatMessage.text = item.messages.last().text
