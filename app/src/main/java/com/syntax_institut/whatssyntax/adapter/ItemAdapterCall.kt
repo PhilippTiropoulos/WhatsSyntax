@@ -12,7 +12,7 @@ import com.syntax_institut.whatssyntax.databinding.ListItemCallsBinding
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
  */
 class ItemAdapterCall(
-    private var datasetCalls : List<Call>
+    private var datasetCalls: List<Call>
 
 
 ) : RecyclerView.Adapter<ItemAdapterCall.ItemViewHolder>() {
@@ -21,13 +21,15 @@ class ItemAdapterCall(
     /**
      * der ViewHolder umfasst die View uns stellt einen Listeneintrag dar
      */
-    inner class ItemViewHolder(val binding: ListItemCallsBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ItemViewHolder(val binding: ListItemCallsBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     /**
      * hier werden neue ViewHolder erstellt
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val binding = ListItemCallsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListItemCallsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding)
     }
 
@@ -46,15 +48,6 @@ class ItemAdapterCall(
 
     }
 
-
-    /**
-     * hier findet der Recyclingprozess statt
-     * die vom ViewHolder bereitgestellten Parameter erhalten die Information des Listeneintrags
-     */
-
-    /**
-     * damit der LayoutManager weiß, wie lang die Liste ist
-     */
     override fun getItemCount(): Int {
         return datasetCalls.size
     }

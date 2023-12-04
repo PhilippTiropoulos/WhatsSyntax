@@ -43,8 +43,8 @@ class ItemAdapterChat(
         holder.binding.tvChatMessage.text = item.messages.last().text
 
 
-
     }
+
     /**
      * damit der LayoutManager weiß, wie lang die Liste ist
      */

@@ -22,4 +22,9 @@
         android:id="@+id/statusFragment"
         android:name="de.syntax_institut.telefonbuch.ui.StatusFragment"
         android:label="StatusFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.syntax_institut.whatssyntax.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

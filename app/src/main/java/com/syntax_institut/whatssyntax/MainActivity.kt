@@ -29,6 +29,5 @@ class MainActivity : AppCompatActivity() {
         binding.bnwBottomNavBar.setupWithNavController(navController)
 
 
-
     }
 }
