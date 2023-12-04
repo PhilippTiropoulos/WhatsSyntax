@@ -48,6 +48,7 @@ class ItemAdapterCall(
 
         if (item.accepted && !item.incoming) {
             holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
+            holder.binding.ivArrowCalls.rotation = 0f
         }
 
         if (!item.accepted && item.incoming) {
@@ -57,6 +58,7 @@ class ItemAdapterCall(
 
         if (!item.accepted && !item.incoming) {
             holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
+            holder.binding.ivArrowCalls.rotation = 0f
         }
 
         /*if (item.accepted) {
