@@ -1,6 +1,7 @@
 package com.syntax_institut.whatssyntax
 
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var chats = Datasource().getChats()
     var calls = Datasource().getCalls()
+    var contacts = Datasource().getContacts()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.syntax_institut.whatssyntax.MainActivity
+import com.syntax_institut.whatssyntax.adapter.ItemAdapterStatus
 import com.syntax_institut.whatssyntax.databinding.FragmentStatusBinding
 
 class StatusFragment : Fragment() {
@@ -27,6 +29,11 @@ class StatusFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Dataset "rüberholen"
         val mainActivity = activity as MainActivity
+
+        val itemAdapter = ItemAdapterStatus(mainActivity.contacts.filter { it.status != null })
+        binding.rvStatus.adapter = itemAdapter
+
+        binding.rvStatus.layoutManager = LinearLayoutManager(context)
 
 
 
