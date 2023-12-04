@@ -9,14 +9,18 @@
         android:id="@+id/chatFragment"
         android:name="com.syntax_institut.whatssyntax.fragments.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/callFragment"
         android:name="de.syntax_institut.telefonbuch.ui.CallFragment"
         android:label="CallFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="de.syntax_institut.telefonbuch.ui.SettingsFragment"
+        android:name="com.syntax_institut.whatssyntax.fragments.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/statusFragment"
@@ -27,4 +31,16 @@
         android:name="com.syntax_institut.whatssyntax.fragments.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/singleChatFragment"
+        android:name="com.syntax_institut.whatssyntax.fragments.SingleChatFragment"
+        android:label="fragment_single_chat"
+        tools:layout="@layout/fragment_single_chat" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_singleChatFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
 </navigation>

@@ -2,9 +2,12 @@ package com.syntax_institut.whatssyntax.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.syntax_institut.whatssyntax.data.model.Chat
 import com.syntax_institut.whatssyntax.databinding.ListItemBinding
+import com.syntax_institut.whatssyntax.fragments.ChatFragmentDirections
 
 /**
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
@@ -41,6 +44,13 @@ class ItemAdapterChat(
         holder.binding.ivChatPicture.setImageResource(item.contact.image)
         holder.binding.tvChatName.text = item.contact.name
         holder.binding.tvChatMessage.text = item.messages.last().text
+
+
+
+        holder.binding.contactCard.setOnClickListener{
+            holder.itemView.findNavController().navigate(ChatFragmentDirections.actionChatFragmentToSingleChatFragment(position))
+        }
+
 
 
     }
