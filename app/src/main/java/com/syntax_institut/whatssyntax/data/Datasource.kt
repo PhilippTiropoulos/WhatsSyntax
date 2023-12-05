@@ -38,6 +38,7 @@ class Datasource {
         Contact("Lisa Baker", "111-000-9999", R.drawable.pp_06, null)
     )
 
+
     private val callList = listOf(
         Call(contactList[0], true, true, "11.10.2023 15:30"),
         Call(contactList[1], false, false, "11.10.2023 14:20"),
