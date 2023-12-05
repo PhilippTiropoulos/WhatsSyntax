@@ -50,9 +50,6 @@ class ItemAdapterChat(
         holder.binding.contactCard.setOnClickListener{
             holder.itemView.findNavController().navigate(ChatFragmentDirections.actionChatFragmentToSingleChatFragment(position))
         }
-
-
-
     }
 
     /**

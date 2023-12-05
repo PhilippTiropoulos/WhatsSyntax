@@ -92,10 +92,10 @@ class SingleChatFragment : Fragment() {
                 // Zur Messagelist hinzufügen
                 chat.messages.add(message)
                 // neuen ItemAdapter mit neuer Messageliste erstellen zur aktualisierung
+
                 itemAdapter = ItemAdapterSingleChat(chat.messages)
                 binding.recyclerView.adapter = itemAdapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
-
                 // Eingabefeld leeren
                 binding.textInputLayout.editText?.text?.clear()
                 }
