@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         // Blendet Bottom App Bar im Einzelchat oder bestimmten Fragmenten aus
         binding.bnwBottomNavBar.setupWithNavController(navController)
         navController.addOnDestinationChangedListener{ _, destination, _ ->
-            if (destination.id == R.id.singleChatFragment) {
+            if (destination.id == R.id.singleChatFragment || destination.id == R.id.statusDetailFragment || destination.id == R.id.detailFragment) {
                 binding.bnwBottomNavBar.visibility = View.GONE
             } else {
                 binding.bnwBottomNavBar.visibility = View.VISIBLE
