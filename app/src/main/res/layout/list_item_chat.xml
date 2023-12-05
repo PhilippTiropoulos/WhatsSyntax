@@ -37,8 +37,10 @@
                 android:layout_margin="8dp"
                 android:text="Hast du ... schon bezahlt?"
                 android:textSize="16sp"
+                app:layout_constraintWidth_max="250dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvDate"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
