@@ -16,9 +16,7 @@ import com.syntax_institut.whatssyntax.databinding.FragmentSettingsBinding
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
-    private val args : DetailFragmentArgs by navArgs()
-
-
+    private val args: DetailFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -32,28 +30,15 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = activity as MainActivity
         val position = args.position
-        val user = mainActivity.contacts[position]
+        val user = mainActivity.chats[position].contact
 
         binding.userNameTV.text = user.name
         binding.userNumberTV.text = user.number
         binding.userPicIV.setImageResource(user.image)
 
-
-
-
-
-
-
-
-
     }
-
-
-
-
 
 }

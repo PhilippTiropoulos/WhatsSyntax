@@ -1,14 +1,19 @@
 package com.syntax_institut.whatssyntax
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.provider.ContactsContract.Data
+import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.activity.addCallback
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.syntax_institut.whatssyntax.data.Datasource
 import com.syntax_institut.whatssyntax.databinding.ActivityMainBinding
 
@@ -20,8 +25,11 @@ class MainActivity : AppCompatActivity() {
     var contacts = Datasource().getContacts()
     var profile = Datasource().getProfile()
 
+//    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -50,4 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
+
 }

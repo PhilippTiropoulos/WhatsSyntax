@@ -32,6 +32,7 @@ class StatusDetailFragment : Fragment() {
         val status = mainActivity.contacts.filter { it.status != null }[position]
 
         binding.imageView.setImageResource(status.image)
+        status.status?.let { binding.statusPicTV.setImageResource(it.img) }
         binding.tvChatDetailName.text = status.name
         binding.tvStatusDetail.text = status.status?.text
 
