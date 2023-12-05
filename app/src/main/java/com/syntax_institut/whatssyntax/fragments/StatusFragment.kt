@@ -1,4 +1,4 @@
-package de.syntax_institut.telefonbuch.ui
+package com.syntax_institut.whatssyntax.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import com.syntax_institut.whatssyntax.databinding.FragmentStatusBinding
 class StatusFragment : Fragment() {
 
     private lateinit var binding: FragmentStatusBinding
-    //private val args : DetailFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -34,7 +33,6 @@ class StatusFragment : Fragment() {
         binding.rvStatus.adapter = itemAdapter
 
         binding.rvStatus.layoutManager = LinearLayoutManager(context)
-
 
 
 
