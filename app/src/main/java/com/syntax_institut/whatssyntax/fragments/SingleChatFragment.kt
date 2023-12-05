@@ -52,7 +52,7 @@ class SingleChatFragment : Fragment() {
 
         // Zurück - Button
         binding.materialToolbar.setNavigationOnClickListener {
-            findNavController().navigate(SingleChatFragmentDirections.actionSingleChatFragmentToChatFragment())
+            findNavController().navigate(R.id.chatFragment)
         }
 
         var isSendIconActive = false
