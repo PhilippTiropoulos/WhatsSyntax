@@ -2,6 +2,7 @@ package com.syntax_institut.whatssyntax
 
 import android.os.Bundle
 import android.provider.ContactsContract.Data
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -27,8 +28,16 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        binding.bnwBottomNavBar.setupWithNavController(navController)
 
+        // Blendet Bottom App Bar im Einzelchat oder bestimmten Fragmenten aus
+        binding.bnwBottomNavBar.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener{ _, destination, _ ->
+            if (destination.id == R.id.singleChatFragment) {
+                binding.bnwBottomNavBar.visibility = View.GONE
+            } else {
+                binding.bnwBottomNavBar.visibility = View.VISIBLE
+            }
+        }
 
     }
 }
