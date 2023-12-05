@@ -31,7 +31,6 @@ class ChatFragment : Fragment() {
         val mainActivity = activity as MainActivity
         var itemAdapter = ItemAdapterChat(mainActivity.chats)
         binding.rvChatFragment.adapter = itemAdapter
-
         binding.rvChatFragment.layoutManager = LinearLayoutManager(context)
 
     }

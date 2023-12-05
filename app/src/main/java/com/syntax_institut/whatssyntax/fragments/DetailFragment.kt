@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.fragment.navArgs
 import com.syntax_institut.whatssyntax.MainActivity
 import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.adapter.ItemAdapterChat
@@ -14,6 +16,7 @@ import com.syntax_institut.whatssyntax.databinding.FragmentSettingsBinding
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
+    private val args : DetailFragmentArgs by navArgs()
 
 
 
@@ -27,9 +30,22 @@ class DetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = activity as MainActivity
-        //var itemAdapter = ItemAdapterChat(mainActivity.chats)
+        val position = args.position
+        val user = mainActivity.contacts[position]
+
+        binding.userNameTV.text = user.name
+        binding.userNumberTV.text = user.number
+        binding.userPicIV.setImageResource(user.image)
+
+
+
+
+
 
 
     }
