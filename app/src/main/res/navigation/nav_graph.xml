@@ -25,7 +25,11 @@
     <fragment
         android:id="@+id/statusFragment"
         android:name="de.syntax_institut.telefonbuch.ui.StatusFragment"
-        android:label="StatusFragment" />
+        android:label="StatusFragment" >
+        <action
+            android:id="@+id/action_statusFragment_to_statusDetailFragment"
+            app:destination="@id/statusDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.syntax_institut.whatssyntax.fragments.DetailFragment"
@@ -49,5 +53,25 @@
         <action
             android:id="@+id/action_singleChatFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statusDetailFragment"
+        android:name="com.syntax_institut.whatssyntax.fragments.StatusDetailFragment"
+        android:label="StatusDetailFragment" >
+        <argument
+            android:name="profileImageResource"
+            app:argType="integer" />
+        <argument
+            android:name="nameResource"
+            app:argType="string" />
+        <argument
+            android:name="statusResource"
+            app:argType="string" />
+        <argument
+            android:name="phonenumberResource"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_statusDetailFragment_to_statusFragment"
+            app:destination="@id/statusFragment" />
     </fragment>
 </navigation>
