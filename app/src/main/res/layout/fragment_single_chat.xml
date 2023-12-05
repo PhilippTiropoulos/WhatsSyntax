@@ -37,7 +37,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="@id/clOuter"
             app:layout_constraintEnd_toEndOf="@id/clOuter"
-            app:layout_constraintStart_toEndOf="@id/ibBackArrow"
+            app:layout_constraintStart_toEndOf="@id/btnBackArrow"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -75,7 +75,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
-            android:id="@+id/ibBackArrow"
+            android:id="@+id/btnBackArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

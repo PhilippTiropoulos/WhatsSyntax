@@ -51,7 +51,7 @@ class SingleChatFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Zurück - Button
-        binding.materialToolbar.setNavigationOnClickListener {
+        binding.btnBackArrow.setOnClickListener {
             findNavController().navigate(R.id.chatFragment)
         }
 
@@ -77,6 +77,10 @@ class SingleChatFragment : Fragment() {
             }
         }
         binding.textInputLayout.editText?.addTextChangedListener(textWatcher)
+
+        binding.clClick.setOnClickListener{
+
+        }
 
         binding.imageButton.setOnClickListener{
             Log.d("test", "hallo")
