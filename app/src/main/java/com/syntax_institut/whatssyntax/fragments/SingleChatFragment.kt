@@ -84,7 +84,7 @@ class SingleChatFragment : Fragment() {
 
         binding.imageButton.setOnClickListener{
             Log.d("test", "hallo")
-            if (binding.textInputLayout.editText?.text.isNullOrEmpty()) return@setOnClickListener
+            if (binding.textInputLayout.editText?.text?.trim().isNullOrEmpty()) return@setOnClickListener
 
 
             if (!isSendIconActive) {
