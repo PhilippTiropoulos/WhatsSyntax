@@ -3,8 +3,11 @@ package com.syntax_institut.whatssyntax
 import android.os.Bundle
 import android.provider.ContactsContract.Data
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.activity.addCallback
 import androidx.navigation.ui.setupWithNavController
 import com.syntax_institut.whatssyntax.data.Datasource
 import com.syntax_institut.whatssyntax.databinding.ActivityMainBinding
@@ -19,6 +22,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                binding.navHostFragment.findNavController().navigateUp()
+            }
+        })
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
