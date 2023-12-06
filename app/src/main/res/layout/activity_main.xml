@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/andrej_lisakov_v2oyjtfqety_unsplash" />
+        app:srcCompat="@drawable/background" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
