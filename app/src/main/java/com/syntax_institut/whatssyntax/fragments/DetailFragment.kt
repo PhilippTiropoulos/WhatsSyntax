@@ -1,17 +1,15 @@
 package com.syntax_institut.whatssyntax.fragments
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.syntax_institut.whatssyntax.MainActivity
-import com.syntax_institut.whatssyntax.R
-import com.syntax_institut.whatssyntax.adapter.ItemAdapterChat
 import com.syntax_institut.whatssyntax.databinding.FragmentDetailBinding
-import com.syntax_institut.whatssyntax.databinding.FragmentSettingsBinding
 
 
 class DetailFragment : Fragment() {
@@ -34,10 +32,35 @@ class DetailFragment : Fragment() {
         val mainActivity = activity as MainActivity
         val position = args.position
         val user = mainActivity.chats[position].contact
+        val filteredList = mainActivity.contacts.filter { it.status != null }
+        val userPos = filteredList.indexOf(user)
 
+        binding.materialToolbar.title = user.name
         binding.userNameTV.text = user.name
         binding.userNumberTV.text = user.number
         binding.userPicIV.setImageResource(user.image)
+
+        // Setze Status wenn vorhanden
+        if (user.status != null) {
+            binding.userStatusTV.text = user.status.text
+
+            // Nur Klickbar wenn Status vorhanden ist
+            binding.userStatusTV.setOnClickListener {
+                findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToStatusDetailFragment(userPos))
+            }
+            // anderenfalls lasse TV leer und Hintergrund transparent
+        } else {
+            binding.userStatusTV.setBackgroundColor(Color.TRANSPARENT)
+            binding.userStatusTV.text = ""
+        }
+
+        // Zurück navigieren
+        binding.materialToolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        // Zum Status des jeweiligen Kontaktes navigieren
+
 
     }
 
