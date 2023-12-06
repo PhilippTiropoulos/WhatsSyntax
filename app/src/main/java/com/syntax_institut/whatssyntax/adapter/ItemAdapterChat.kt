@@ -3,7 +3,6 @@ package com.syntax_institut.whatssyntax.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.syntax_institut.whatssyntax.data.model.Chat
 import com.syntax_institut.whatssyntax.databinding.ListItemBinding
@@ -37,16 +36,16 @@ class ItemAdapterChat(
      * die vom ViewHolder bereitgestellten Parameter erhalten die Information des Listeneintrags
      */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = datasetChats[position]
+        val chat = datasetChats[position]
 
 
         //val mainActivity = activity as MainActivity
-        holder.binding.ivChatPicture.setImageResource(item.contact.image)
-        holder.binding.tvChatName.text = item.contact.name
-        holder.binding.tvChatMessage.text = item.messages.last().text
+        holder.binding.ivChatPicture.setImageResource(chat.contact.image)
+        holder.binding.tvChatName.text = chat.contact.name
+        holder.binding.tvChatMessage.text = chat.messages.last().text
 
 
-
+        // zum jeweiligen Chat navigieren
         holder.binding.contactCard.setOnClickListener{
             holder.itemView.findNavController().navigate(ChatFragmentDirections.actionChatFragmentToSingleChatFragment(position))
         }

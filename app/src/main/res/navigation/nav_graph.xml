@@ -38,6 +38,9 @@
         <argument
             android:name="position"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_to_statusDetailFragment"
+            app:destination="@id/statusDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/singleChatFragment"

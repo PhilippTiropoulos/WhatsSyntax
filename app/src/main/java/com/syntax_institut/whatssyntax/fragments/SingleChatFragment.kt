@@ -22,7 +22,7 @@ import java.util.Calendar
 class SingleChatFragment : Fragment() {
 
     private lateinit var binding: FragmentSingleChatBinding
-    private val args : SingleChatFragmentArgs by navArgs()
+    private val args: SingleChatFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -41,6 +41,10 @@ class SingleChatFragment : Fragment() {
         // Chat mit jeweiligem Kontakt zwischenspeichern
         val chat = mainActivity.chats[args.position]
 
+        binding.recyclerView.post {
+            binding.recyclerView.scrollToPosition(chat.messages.size - 1)
+        }
+
         // Toolbar mit Daten des Chatpartners befüllen
         binding.imageView.setImageResource(chat.contact.image)
         binding.tvChatDetailName.text = chat.contact.name
@@ -53,7 +57,7 @@ class SingleChatFragment : Fragment() {
 
         // Zurück - Button
         binding.btnBackArrow.setOnClickListener {
-            findNavController().navigate(R.id.chatFragment)
+            findNavController().navigateUp()
         }
 
         var isSendIconActive = false
@@ -68,7 +72,7 @@ class SingleChatFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                if (p0.isNullOrEmpty()){
+                if (p0.isNullOrEmpty()) {
                     binding.imageButton.setImageResource(R.drawable.baseline_mic_24)
                     isSendIconActive = false
                 } else {
@@ -79,39 +83,37 @@ class SingleChatFragment : Fragment() {
         }
         binding.textInputLayout.editText?.addTextChangedListener(textWatcher)
 
-        binding.clClick.setOnClickListener{
 
-        }
+        binding.imageButton.setOnClickListener {
+            if (binding.textInputLayout.editText?.text?.trim()
+                    .isNullOrEmpty()
+            ) return@setOnClickListener
 
-        binding.imageButton.setOnClickListener{
-            Log.d("test", "hallo")
-            if (binding.textInputLayout.editText?.text?.trim().isNullOrEmpty()) return@setOnClickListener
-
-
-            if (!isSendIconActive) {
-                // Aufnehmen
-            } else {
+            if (isSendIconActive) {
                 // Neue Message erstellen anhand dessen, was eingegeben wurde und aktueller Zeit
                 val textString = binding.textInputLayout.editText?.text.toString()
                 val message = Message(textString, false, Calendar.getInstance())
                 // Zur Messagelist hinzufügen
                 chat.messages.add(message)
-                // neuen ItemAdapter mit neuer Messageliste erstellen zur aktualisierung
-
-                itemAdapter = ItemAdapterSingleChat(chat.messages)
-                binding.recyclerView.adapter = itemAdapter
-                binding.recyclerView.layoutManager = LinearLayoutManager(context)
+                // Neue Position der hinzugefügten Nachricht
+                val newPosition = chat.messages.size - 1
+                // RecyclerView aktualisieren
+                itemAdapter.notifyItemInserted(newPosition)
+                // Zur neusten Nachricht scrollen
+                binding.recyclerView.scrollToPosition(newPosition)
                 // Eingabefeld leeren
                 binding.textInputLayout.editText?.text?.clear()
-                }
             }
+        }
+
         binding.clClick.setOnClickListener {
             val position = args.position
             val navController = binding.root.findNavController()
-
-            navController.navigate(SingleChatFragmentDirections.actionSingleChatFragmentToDetailFragment(position))
-
+            navController.navigate(
+                SingleChatFragmentDirections.actionSingleChatFragmentToDetailFragment(
+                    position
+                )
+            )
         }
-        }
-
     }
+}

@@ -1,10 +1,12 @@
 package com.syntax_institut.whatssyntax.adapter
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.color.MaterialColors
 import com.syntax_institut.whatssyntax.data.model.Message
 import com.syntax_institut.whatssyntax.databinding.ListItemChatBinding
 import java.util.Locale
@@ -13,10 +15,9 @@ import java.util.Locale
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
  */
 class ItemAdapterSingleChat(
-    private var messages : List<Message>,
-    private var pos: Int = 0
+    private var messages: List<Message>
 
-    ) : RecyclerView.Adapter<ItemAdapterSingleChat.ItemViewHolder>() {
+) : RecyclerView.Adapter<ItemAdapterSingleChat.ItemViewHolder>() {
 
 
     /**
@@ -36,38 +37,37 @@ class ItemAdapterSingleChat(
      * hier findet der Recyclingprozess statt
      * die vom ViewHolder bereitgestellten Parameter erhalten die Information des Listeneintrags
      */
+    @SuppressLint("ResourceType")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val layoutParams = holder.binding.cvChatMessage.layoutParams as ConstraintLayout.LayoutParams
-        // erstellt solange ViewHolder solange es noch Nachrichten in der Liste gibt
-        if (pos < messages.size) {
-            // falls die Nachricht von uns selbst stammt andere Farbe
-            if (!messages[pos].incoming) {
+        val currentMessage = messages[position]
+
+            // falls die Nachricht von uns selbst stammt, am Rechtem Bildschirmrand constrainen
+            // und andere Hintergrundfarbe setzen
+            if (!currentMessage.incoming) {
                 layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
                 layoutParams.startToStart = ConstraintLayout.LayoutParams.UNSET
                 holder.binding.cvChatMessage.setCardBackgroundColor(
-                    holder.itemView.context.getColor(com.google.android.material.R.color.m3_ref_palette_dynamic_primary90)
+                    MaterialColors.getColor(holder.itemView, com.google.android.material.R.attr.colorPrimaryContainer)
                 )
-            //
+            // anderenfalls am linken Rand
             } else {
                 layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
                 layoutParams.endToEnd = ConstraintLayout.LayoutParams.UNSET
                 holder.binding.cvChatMessage.setCardBackgroundColor(
-                    holder.itemView.context.getColor(com.google.android.material.R.color.material_personalized_color_on_background)
+                    MaterialColors.getColor(holder.itemView, com.google.android.material.R.attr.colorSurfaceContainerLowest)
                 )
             }
-
-            holder.binding.cvChatMessage.requestLayout()
             holder.binding.cvChatMessage.layoutParams = layoutParams
-            holder.binding.tvMessage.text = messages[pos].text
+            //holder.binding.cvChatMessage.requestLayout()
 
+            // Message und Uhrzeit in TextViews schreiben
+            holder.binding.tvMessage.text = messages[position].text
             val format = SimpleDateFormat("HH:mm", Locale.GERMANY)
-            val formattedDate = format.format(messages[pos].timestamp.time)
+            val formattedDate = format.format(messages[position].timestamp.time)
             holder.binding.tvDate.text = formattedDate
-            pos++
 
         }
-
-    }
 
     /**
      * damit der LayoutManager weiß, wie lang die Liste ist
@@ -75,6 +75,4 @@ class ItemAdapterSingleChat(
     override fun getItemCount(): Int {
         return messages.size
     }
-
-
 }
