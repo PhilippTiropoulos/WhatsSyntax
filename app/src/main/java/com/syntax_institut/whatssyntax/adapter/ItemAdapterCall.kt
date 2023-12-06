@@ -1,5 +1,7 @@
 package com.syntax_institut.whatssyntax.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -75,6 +77,14 @@ class ItemAdapterCall(
         }*/
         holder.binding.tvCallName.text = item.contact.name
         holder.binding.tvCallMessage.text = item.time
+
+        holder.binding.contactCard.setOnClickListener{
+            val phoneNumber = item.contact.number
+
+            val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+
+            holder.itemView.context.startActivity(dialIntent)
+        }
 
     }
 
