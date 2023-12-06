@@ -29,7 +29,7 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Dataset "rüberholen"
         val mainActivity = activity as MainActivity
-        var itemAdapter = ItemAdapterChat(mainActivity.chats)
+        val itemAdapter = ItemAdapterChat(mainActivity.chats)
         binding.rvChatFragment.adapter = itemAdapter
         binding.rvChatFragment.layoutManager = LinearLayoutManager(context)
 
