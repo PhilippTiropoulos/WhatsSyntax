@@ -28,14 +28,9 @@ class StatusFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Dataset "rüberholen"
         val mainActivity = activity as MainActivity
-
+        // ItemAdapter für alle Kontakte mit Status
         val itemAdapter = ItemAdapterStatus(mainActivity.contacts.filter { it.status != null })
         binding.rvStatus.adapter = itemAdapter
-
         binding.rvStatus.layoutManager = LinearLayoutManager(context)
-
-
-
-
     }
 }

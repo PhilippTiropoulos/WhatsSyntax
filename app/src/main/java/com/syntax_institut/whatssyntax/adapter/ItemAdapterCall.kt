@@ -92,15 +92,9 @@ class ItemAdapterCall(
             // bessers thread sleep
             Handler(Looper.getMainLooper()).postDelayed({
                 item.incoming = false
-//            item.accepted = listOf(true, false).random()
                 item.accepted = Random.nextBoolean()
-
-
-
                 item.time = currentDateTime
-
                 datasetCalls = datasetCalls.sortedByDescending { it.time }
-
                 notifyDataSetChanged()
             },500)
         }

@@ -27,7 +27,8 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Dataset "rüberholen"
+
+        // ItemAdapter für Chats
         val mainActivity = activity as MainActivity
         val itemAdapter = ItemAdapterChat(mainActivity.chats)
         binding.rvChatFragment.adapter = itemAdapter

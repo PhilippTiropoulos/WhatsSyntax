@@ -35,6 +35,7 @@ class DetailFragment : Fragment() {
         val filteredList = mainActivity.contacts.filter { it.status != null }
         val userPos = filteredList.indexOf(user)
 
+        // Daten setzen
         binding.materialToolbar.title = user.name
         binding.userNameTV.text = user.name
         binding.userNumberTV.text = user.number

@@ -39,7 +39,7 @@ class ItemAdapterSingleChat(
      * hier findet der Recyclingprozess statt
      * die vom ViewHolder bereitgestellten Parameter erhalten die Information des Listeneintrags
      */
-    @SuppressLint("ResourceType")
+
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val layoutParams =
             holder.binding.cvChatMessage.layoutParams as ConstraintLayout.LayoutParams

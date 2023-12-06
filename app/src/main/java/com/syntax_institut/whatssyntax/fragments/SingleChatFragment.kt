@@ -46,12 +46,12 @@ class SingleChatFragment : Fragment() {
         }
 
         // Toolbar mit Daten des Chatpartners befüllen
-        binding.imageView.setImageResource(chat.contact.image)
+        binding.ivContacePic.setImageResource(chat.contact.image)
         binding.tvChatDetailName.text = chat.contact.name
         binding.tvNumberChatDetails.text = chat.contact.number
 
         //Messageliste erstellen um damit ItemAdapter zu erstellen usw.
-        var itemAdapter = ItemAdapterSingleChat(chat.messages)
+        val itemAdapter = ItemAdapterSingleChat(chat.messages)
         binding.recyclerView.adapter = itemAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -59,9 +59,9 @@ class SingleChatFragment : Fragment() {
         binding.btnBackArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-
+        // gibt an ob Senden oder Micro Symbol angezeigt wird
         var isSendIconActive = false
-        // Textwatcher der Icons ändert je nachdem ob Eingabefeld leer ist oder nicht
+        // Textwatcher, welcher Icons ändert je nachdem ob Eingabefeld leer ist oder nicht
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // nichts
@@ -72,26 +72,27 @@ class SingleChatFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                if (p0.isNullOrEmpty()) {
-                    binding.imageButton.setImageResource(R.drawable.baseline_mic_24)
-                    isSendIconActive = false
+                isSendIconActive = if (p0.isNullOrEmpty()) {
+                    binding.ibSendOrMic.setImageResource(R.drawable.baseline_mic_24)
+                    false
                 } else {
-                    binding.imageButton.setImageResource(R.drawable.baseline_send_24)
-                    isSendIconActive = true
+                    binding.ibSendOrMic.setImageResource(R.drawable.baseline_send_24)
+                    true
                 }
             }
         }
-        binding.textInputLayout.editText?.addTextChangedListener(textWatcher)
+        // TextWatcher unserem EditText zuweisen als TextChangedListener
+        binding.tilWriteMessage.editText?.addTextChangedListener(textWatcher)
 
 
-        binding.imageButton.setOnClickListener {
-            if (binding.textInputLayout.editText?.text?.trim()
+        binding.ibSendOrMic.setOnClickListener {
+            if (binding.tilWriteMessage.editText?.text?.trim()
                     .isNullOrEmpty()
             ) return@setOnClickListener
 
             if (isSendIconActive) {
                 // Neue Message erstellen anhand dessen, was eingegeben wurde und aktueller Zeit
-                val textString = binding.textInputLayout.editText?.text.toString()
+                val textString = binding.tilWriteMessage.editText?.text.toString()
                 val message = Message(textString, false, Calendar.getInstance())
                 // Zur Messagelist hinzufügen
                 chat.messages.add(message)
@@ -102,7 +103,7 @@ class SingleChatFragment : Fragment() {
                 // Zur neusten Nachricht scrollen
                 binding.recyclerView.scrollToPosition(newPosition)
                 // Eingabefeld leeren
-                binding.textInputLayout.editText?.text?.clear()
+                binding.tilWriteMessage.editText?.text?.clear()
             }
         }
 

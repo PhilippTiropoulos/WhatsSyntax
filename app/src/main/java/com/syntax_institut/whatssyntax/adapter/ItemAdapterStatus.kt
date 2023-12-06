@@ -26,14 +26,12 @@ class ItemAdapterStatus(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         //val withStatus = datasetContacts.
         val item = datasetContacts[position]
-        val status = item.status?.text
 
         holder.binding.ivChatPicture.setImageResource(item.image)
         holder.binding.tvChatName.text = item.name
 
         holder.binding.contactCard.setOnClickListener{
             val navController = holder.binding.root.findNavController()
-
             navController.navigate(StatusFragmentDirections.actionStatusFragmentToStatusDetailFragment(position))
         }
 
