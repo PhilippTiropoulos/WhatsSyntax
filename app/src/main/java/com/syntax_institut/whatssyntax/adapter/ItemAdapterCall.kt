@@ -9,6 +9,10 @@ import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.data.model.Call
 import com.syntax_institut.whatssyntax.databinding.ListItemBinding
 import com.syntax_institut.whatssyntax.databinding.ListItemCallsBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import kotlin.random.Random
 
 /**
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
@@ -78,12 +82,29 @@ class ItemAdapterCall(
         holder.binding.tvCallName.text = item.contact.name
         holder.binding.tvCallMessage.text = item.time
 
-        holder.binding.contactCard.setOnClickListener{
+        holder.binding.contactCard.setOnClickListener {
             val phoneNumber = item.contact.number
 
             val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
 
             holder.itemView.context.startActivity(dialIntent)
+
+            Thread.sleep(1000)
+
+            item.incoming = false
+//            item.accepted = listOf(true, false).random()
+            item.accepted = Random.nextBoolean()
+
+            val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+            val currentDateTime = Calendar.getInstance().time
+            val dateTime = dateFormat.format(currentDateTime)
+
+            item.time = dateTime
+
+            datasetCalls = datasetCalls.sortedByDescending { it.time }
+
+            notifyDataSetChanged()
+
         }
 
     }
