@@ -1,6 +1,6 @@
 package com.syntax_institut.whatssyntax.adapter
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -43,7 +43,6 @@ class ItemAdapterCall(
         return ItemViewHolder(binding)
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = datasetCalls[position]
 
