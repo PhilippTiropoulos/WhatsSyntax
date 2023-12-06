@@ -7,9 +7,12 @@ import com.syntax_institut.whatssyntax.data.model.Contact
 import com.syntax_institut.whatssyntax.data.model.Message
 import com.syntax_institut.whatssyntax.data.model.Profile
 import com.syntax_institut.whatssyntax.data.model.Status
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class Datasource {
 
@@ -39,27 +42,29 @@ class Datasource {
         Contact("Lisa Baker", "111-000-9999", R.drawable.pp_06, null)
     )
 
+    val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+
     private val callList = listOf(
-        Call(contactList[0], true, true, "11.10.2023 15:30"),
-        Call(contactList[1], false, false, "11.10.2023 14:20"),
-        Call(contactList[2], true, false, "10.10.2023 18:45"),
-        Call(contactList[3], false, true, "10.10.2023 12:10"),
-        Call(contactList[4], true, true, "09.10.2023 21:30"),
-        Call(contactList[5], true, false, "09.10.2023 19:20"),
-        Call(contactList[6], false, false, "08.10.2023 08:00"),
-        Call(contactList[7], true, true, "08.10.2023 06:15"),
-        Call(contactList[8], false, true, "07.10.2023 22:40"),
-        Call(contactList[9], true, false, "07.10.2023 21:15"),
-        Call(contactList[10], true, true, "07.10.2023 14:50"),
-        Call(contactList[11], false, true, "06.10.2023 20:30"),
-        Call(contactList[12], true, false, "06.10.2023 11:00"),
-        Call(contactList[13], true, true, "05.10.2023 16:25"),
-        Call(contactList[14], false, false, "05.10.2023 14:10"),
-        Call(contactList[15], true, true, "05.10.2023 09:45"),
-        Call(contactList[16], false, true, "04.10.2023 23:30"),
-        Call(contactList[17], true, false, "04.10.2023 18:15"),
-        Call(contactList[18], false, false, "03.10.2023 16:00"),
-        Call(contactList[19], true, true, "03.10.2023 10:30")
+        Call(contactList[0], incoming = true, true, dateFormat.parse("11.10.2023 15:30")),
+        Call(contactList[1], incoming = false, false, dateFormat.parse("11.10.2023 14:20")),
+        Call(contactList[2], incoming = true, false, dateFormat.parse("10.10.2023 18:45")),
+        Call(contactList[3], incoming = false, true, dateFormat.parse("10.10.2023 12:10")),
+        Call(contactList[4], incoming = true, true, dateFormat.parse("09.10.2023 21:30")),
+        Call(contactList[5], incoming = true, false, dateFormat.parse("09.10.2023 19:20")),
+        Call(contactList[6], incoming = false, false, dateFormat.parse("08.10.2023 08:00")),
+        Call(contactList[7], incoming = true, true, dateFormat.parse("08.10.2023 06:15")),
+        Call(contactList[8], incoming = false, true, dateFormat.parse("07.10.2023 22:40")),
+        Call(contactList[9], incoming = true, false, dateFormat.parse("07.10.2023 21:15")),
+        Call(contactList[10], incoming = true, true, dateFormat.parse("07.10.2023 14:50")),
+        Call(contactList[11], incoming = false, true, dateFormat.parse("06.10.2023 20:30")),
+        Call(contactList[12], incoming = true, false, dateFormat.parse("06.10.2023 11:00")),
+        Call(contactList[13], incoming = true, true, dateFormat.parse("05.10.2023 16:25")),
+        Call(contactList[14], incoming = false, false, dateFormat.parse("05.10.2023 14:10")),
+        Call(contactList[15], incoming = true, true, dateFormat.parse("05.10.2023 09:45")),
+        Call(contactList[16], incoming = false, true, dateFormat.parse("04.10.2023 23:30")),
+        Call(contactList[17], incoming = true, false, dateFormat.parse("04.10.2023 18:15")),
+        Call(contactList[18], incoming = false, false, dateFormat.parse("03.10.2023 16:00")),
+        Call(contactList[19], incoming = true, true, dateFormat.parse("03.10.2023 10:30"))
     )
 
 

@@ -9,10 +9,13 @@ import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.data.model.Call
 import com.syntax_institut.whatssyntax.databinding.ListItemBinding
 import com.syntax_institut.whatssyntax.databinding.ListItemCallsBinding
+import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import kotlin.random.Random
+import android.os.Handler
+import android.os.Looper
 
 /**
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
@@ -79,8 +82,13 @@ class ItemAdapterCall(
                 holder.binding.ivArrowCalls.rotation = 180F
             }
         }*/
+
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+        val currentDateTime = Calendar.getInstance().time
+//        val dateTime = dateFormat.format(currentDateTime)
+
         holder.binding.tvCallName.text = item.contact.name
-        holder.binding.tvCallMessage.text = item.time
+        holder.binding.tvCallMessage.text = dateFormat.format(item.time)
 
         holder.binding.contactCard.setOnClickListener {
             val phoneNumber = item.contact.number
@@ -89,22 +97,19 @@ class ItemAdapterCall(
 
             holder.itemView.context.startActivity(dialIntent)
 
-            Thread.sleep(1000)
-
-            item.incoming = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                item.incoming = false
 //            item.accepted = listOf(true, false).random()
-            item.accepted = Random.nextBoolean()
+                item.accepted = Random.nextBoolean()
 
-            val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
-            val currentDateTime = Calendar.getInstance().time
-            val dateTime = dateFormat.format(currentDateTime)
 
-            item.time = dateTime
 
-            datasetCalls = datasetCalls.sortedByDescending { it.time }
+                item.time = currentDateTime
 
-            notifyDataSetChanged()
+                datasetCalls = datasetCalls.sortedByDescending { it.time }
 
+                notifyDataSetChanged()
+            }, 1000)
         }
 
     }
