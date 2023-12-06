@@ -109,7 +109,7 @@ class ItemAdapterCall(
                 datasetCalls = datasetCalls.sortedByDescending { it.time }
 
                 notifyDataSetChanged()
-            }, 1000)
+            }, 0)
         }
 
     }
