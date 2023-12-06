@@ -4,20 +4,20 @@
     <item
         android:id="@+id/chatFragment"
         android:title="Chats"
-        android:icon="@drawable/icon_chat"/>
+        android:icon="@drawable/icon_chat_selector" />
 
     <item
         android:id="@+id/statusFragment"
         android:title="Status"
-        android:icon="@drawable/icon_status"/>
+        android:icon="@drawable/icon_status_selector"/>
 
     <item
         android:id="@+id/callFragment"
         android:title="Calls"
-        android:icon="@drawable/icon_call"/>
+        android:icon="@drawable/icon_call_selector"/>
 
     <item
         android:id="@+id/settingsFragment"
         android:title="Settings"
-        android:icon="@drawable/icon_settings"/>
+        android:icon="@drawable/icon_settings_selector"/>
 </menu>
