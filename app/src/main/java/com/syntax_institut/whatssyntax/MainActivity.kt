@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 binding.navHostFragment.findNavController().navigateUp()
+
             }
         })
 
