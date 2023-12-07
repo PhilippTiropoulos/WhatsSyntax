@@ -22,10 +22,10 @@ import android.os.Looper
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
  */
 class ItemAdapterCall(
-    private var datasetCalls: List<Call>
+    private var datasetCalls: MutableList<Call>,
 
 
-) : RecyclerView.Adapter<ItemAdapterCall.ItemViewHolder>() {
+    ) : RecyclerView.Adapter<ItemAdapterCall.ItemViewHolder>() {
 
 
     /**
@@ -48,33 +48,33 @@ class ItemAdapterCall(
 
         holder.binding.ivCallPicture.setImageResource(item.contact.image)
 
+        val imageRes = if (item.accepted) R.drawable.icon_call_accepted else R.drawable.icon_call_missed
+        val rotation = if (item.incoming) 180f else 0f
+        holder.binding.ivArrowCalls.setImageResource(imageRes)
+        holder.binding.ivArrowCalls.rotation = rotation
 
+        /*        if (item.accepted && item.incoming) {
+                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
+                    holder.binding.ivArrowCalls.rotation = 180F
+                }
+                if (item.accepted && !item.incoming) {
+                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
+                    holder.binding.ivArrowCalls.rotation = 0f
+                }
 
-        if (item.accepted && item.incoming) {
-            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
-            holder.binding.ivArrowCalls.rotation = 180F
+                if (!item.accepted && item.incoming) {
+                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
+                    holder.binding.ivArrowCalls.rotation = 180F
+                }
 
-        }
-
-        if (item.accepted && !item.incoming) {
-            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
-            holder.binding.ivArrowCalls.rotation = 0f
-        }
-
-        if (!item.accepted && item.incoming) {
-            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
-            holder.binding.ivArrowCalls.rotation = 180F
-        }
-
-        if (!item.accepted && !item.incoming) {
-            holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
-            holder.binding.ivArrowCalls.rotation = 0f
-        }
+                if (!item.accepted && !item.incoming) {
+                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
+                    holder.binding.ivArrowCalls.rotation = 0f
+                }*/
 
 
         //bestimmt Uhrzeit und Datum
         val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
-        val currentDateTime = Calendar.getInstance().time
 //        val dateTime = dateFormat.format(currentDateTime)
 
         holder.binding.tvCallName.text = item.contact.name
@@ -88,8 +88,21 @@ class ItemAdapterCall(
 
             holder.itemView.context.startActivity(dialIntent)
 
+            val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
+            addCall(call)
+            // Rufe die Callback-Methode nach einer Verzögerung auf
+            /*Handler(Looper.getMainLooper()).postDelayed({
+                val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
+                addCall(call)
+            }, 0)*/
 
-            // besseres thread sleep
+            /*            val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
+                        updateData(datasetCalls+call)*/
+            /*            item.incoming = false
+                        item.accepted = Random.nextBoolean()
+                        item.time = Calendar.getInstance().time*/
+
+            /*            // bessers thread sleep
             Handler(Looper.getMainLooper()).postDelayed({
                 item.incoming = false
                 item.accepted = Random.nextBoolean()
@@ -97,8 +110,14 @@ class ItemAdapterCall(
                 datasetCalls = datasetCalls.sortedByDescending { it.time }
                 notifyDataSetChanged()
             },500)
-        }
+        }*/
 
+        }
+    }
+    // Neue Methode, um einen Anruf hinzuzufügen
+    private fun addCall(call: Call) {
+        datasetCalls.add(0, call)
+        notifyItemInserted(0)
     }
 
     override fun getItemCount(): Int {
