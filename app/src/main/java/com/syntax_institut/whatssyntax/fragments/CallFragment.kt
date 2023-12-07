@@ -15,7 +15,7 @@ class CallFragment : Fragment() {
 
     private lateinit var binding: FragmentCallBinding
     //private val args : DetailFragmentArgs by navArgs()
-
+    private lateinit var itemAdapter: ItemAdapterCall
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,12 +28,28 @@ class CallFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // ItemAdapter für Anrufe
         val mainActivity = activity as MainActivity
-        var itemAdapter = ItemAdapterCall(mainActivity.calls)
+        itemAdapter = ItemAdapterCall(mainActivity.calls.sortedByDescending { it.time }.toMutableList())
         binding.rvFragmentCall.adapter = itemAdapter
         binding.rvFragmentCall.layoutManager = LinearLayoutManager(context)
 
+
     }
+
+/*    override fun onResume() {
+        Log.d("test", "heResume")
+        val mainActivity = activity as MainActivity
+        itemAdapter.updateData(mainActivity.calls)
+        super.onResume()
+        Log.d("test", "heResumeAfter")
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        Log.d("test", "he")
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            itemAdapter.notifyDataSetChanged()
+        }
+    }*/
 }

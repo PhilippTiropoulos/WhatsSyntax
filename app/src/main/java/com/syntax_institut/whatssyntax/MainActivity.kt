@@ -13,6 +13,7 @@ import com.syntax_institut.whatssyntax.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    val data = Datasource()
     var chats = Datasource().getChats()
     var calls = Datasource().getCalls()
     var contacts = Datasource().getContacts()
@@ -48,9 +49,5 @@ class MainActivity : AppCompatActivity() {
                 binding.bnwBottomNavBar.visibility = View.VISIBLE
             }
         }
-
     }
-
-
-
 }
