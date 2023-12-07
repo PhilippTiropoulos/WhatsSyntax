@@ -1,11 +1,14 @@
 package com.syntax_institut.whatssyntax.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.syntax_institut.whatssyntax.MainActivity
@@ -29,6 +32,7 @@ class SettingsFragment : Fragment() {
 
         val mainActivity = activity as MainActivity
         val profile = mainActivity.profile
+        binding.btSettingsSave.isEnabled = false
 
         // Werte des Users übergeben
         binding.ivPictureSettings.setImageResource(profile.image)
@@ -39,7 +43,7 @@ class SettingsFragment : Fragment() {
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // Button deaktivieren zu beginn
-                binding.btSettingsSave.isEnabled = false
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -61,12 +65,19 @@ class SettingsFragment : Fragment() {
             profile.number = binding.tilSettingsTwo.editText?.text.toString()
             // Button wieder deaktivieren
             binding.btSettingsSave.isEnabled = false
-            // Snackbarausgabe
-            Snackbar.make(
-                this.requireView(),
+            // Snackbar erstellen
+            val snackBar = Snackbar.make(
+                binding.root,
                 "Änderungen wurden gespeichert!",
                 Snackbar.LENGTH_SHORT
-            ).show()
+            )
+            // Setzt Snackbar Gravity nach oben statt unten
+            val params = snackBar.view.layoutParams as FrameLayout.LayoutParams
+            params.gravity = Gravity.TOP
+            params.topMargin = 12
+            snackBar.view.layoutParams = params
+            // Ausgabe
+            snackBar.show()
         }
     }
 
