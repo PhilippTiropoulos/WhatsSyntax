@@ -8,15 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.data.model.Call
-import com.syntax_institut.whatssyntax.databinding.ListItemBinding
 import com.syntax_institut.whatssyntax.databinding.ListItemCallsBinding
-import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import kotlin.random.Random
-import android.os.Handler
-import android.os.Looper
 
 /**
  * Diese Klasse organisiert mithilfe der ViewHolder Klasse das Recycling
@@ -89,7 +85,8 @@ class ItemAdapterCall(
             holder.itemView.context.startActivity(dialIntent)
 
             val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
-            addCall(call)
+            datasetCalls.add(0, call)
+            notifyItemInserted(0)
             // Rufe die Callback-Methode nach einer Verzögerung auf
             /*Handler(Looper.getMainLooper()).postDelayed({
                 val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
@@ -113,11 +110,6 @@ class ItemAdapterCall(
         }*/
 
         }
-    }
-    // Neue Methode, um einen Anruf hinzuzufügen
-    private fun addCall(call: Call) {
-        datasetCalls.add(0, call)
-        notifyItemInserted(0)
     }
 
     override fun getItemCount(): Int {
