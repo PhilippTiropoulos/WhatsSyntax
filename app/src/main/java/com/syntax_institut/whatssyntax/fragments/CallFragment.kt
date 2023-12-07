@@ -36,20 +36,4 @@ class CallFragment : Fragment() {
 
 
     }
-
-/*    override fun onResume() {
-        Log.d("test", "heResume")
-        val mainActivity = activity as MainActivity
-        itemAdapter.updateData(mainActivity.calls)
-        super.onResume()
-        Log.d("test", "heResumeAfter")
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        Log.d("test", "he")
-        super.onHiddenChanged(hidden)
-        if (!hidden) {
-            itemAdapter.notifyDataSetChanged()
-        }
-    }*/
 }
