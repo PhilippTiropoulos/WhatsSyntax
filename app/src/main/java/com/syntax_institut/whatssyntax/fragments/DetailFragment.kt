@@ -63,6 +63,8 @@ class DetailFragment : Fragment() {
         // Zum Status des jeweiligen Kontaktes navigieren
 
 
+
+
     }
 
 }

@@ -14,7 +14,7 @@
     <item
         android:id="@+id/callFragment"
         android:title="Calls"
-        android:icon="@drawable/icon_call_selector"/>
+        android:icon="@drawable/icon_call_selector" />
 
     <item
         android:id="@+id/settingsFragment"

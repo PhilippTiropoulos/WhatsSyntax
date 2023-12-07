@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_chat" >
         <action
             android:id="@+id/action_chatFragment_to_singleChatFragment"
-            app:destination="@id/singleChatFragment" />
+            app:destination="@id/singleChatFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/callFragment"
@@ -28,7 +29,8 @@
         android:label="StatusFragment" >
         <action
             android:id="@+id/action_statusFragment_to_statusDetailFragment"
-            app:destination="@id/statusDetailFragment" />
+            app:destination="@id/statusDetailFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -40,7 +42,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_detailFragment_to_statusDetailFragment"
-            app:destination="@id/statusDetailFragment" />
+            app:destination="@id/statusDetailFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/singleChatFragment"
@@ -52,10 +55,12 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_singleChatFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            app:destination="@id/chatFragment"
+            app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_singleChatFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/statusDetailFragment"
@@ -63,7 +68,8 @@
         android:label="StatusDetailFragment" >
         <action
             android:id="@+id/action_statusDetailFragment_to_statusFragment"
-            app:destination="@id/statusFragment" />
+            app:destination="@id/statusFragment"
+            app:enterAnim="@android:anim/fade_in" />
         <argument
             android:name="position"
             app:argType="integer" />

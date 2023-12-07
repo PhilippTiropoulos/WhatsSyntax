@@ -69,4 +69,5 @@ class SettingsFragment : Fragment() {
             ).show()
         }
     }
+
 }

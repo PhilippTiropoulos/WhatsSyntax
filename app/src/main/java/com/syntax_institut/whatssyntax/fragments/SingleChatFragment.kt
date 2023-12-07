@@ -97,7 +97,7 @@ class SingleChatFragment : Fragment() {
                 // Zur Messagelist hinzufügen
                 chat.messages.add(message)
                 // Neue Position der hinzugefügten Nachricht
-                val newPosition = chat.messages.size - 1
+                val newPosition = chat.messages.size -1
                 // RecyclerView aktualisieren
                 itemAdapter.notifyItemInserted(newPosition)
                 // Zur neusten Nachricht scrollen
@@ -111,9 +111,7 @@ class SingleChatFragment : Fragment() {
             val position = args.position
             val navController = binding.root.findNavController()
             navController.navigate(
-                SingleChatFragmentDirections.actionSingleChatFragmentToDetailFragment(
-                    position
-                )
+                SingleChatFragmentDirections.actionSingleChatFragmentToDetailFragment(position)
             )
         }
     }
