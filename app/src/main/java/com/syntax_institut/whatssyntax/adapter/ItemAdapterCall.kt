@@ -49,26 +49,6 @@ class ItemAdapterCall(
         holder.binding.ivArrowCalls.setImageResource(imageRes)
         holder.binding.ivArrowCalls.rotation = rotation
 
-        /*        if (item.accepted && item.incoming) {
-                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
-                    holder.binding.ivArrowCalls.rotation = 180F
-                }
-                if (item.accepted && !item.incoming) {
-                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_accepted)
-                    holder.binding.ivArrowCalls.rotation = 0f
-                }
-
-                if (!item.accepted && item.incoming) {
-                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
-                    holder.binding.ivArrowCalls.rotation = 180F
-                }
-
-                if (!item.accepted && !item.incoming) {
-                    holder.binding.ivArrowCalls.setImageResource(R.drawable.icon_call_missed)
-                    holder.binding.ivArrowCalls.rotation = 0f
-                }*/
-
-
         //bestimmt Uhrzeit und Datum
         val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
 //        val dateTime = dateFormat.format(currentDateTime)
@@ -87,27 +67,7 @@ class ItemAdapterCall(
             val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
             datasetCalls.add(0, call)
             notifyItemInserted(0)
-            // Rufe die Callback-Methode nach einer Verzögerung auf
-            /*Handler(Looper.getMainLooper()).postDelayed({
-                val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
-                addCall(call)
-            }, 0)*/
 
-            /*            val call = Call(item.contact, false, Random.nextBoolean(), Calendar.getInstance().time)
-                        updateData(datasetCalls+call)*/
-            /*            item.incoming = false
-                        item.accepted = Random.nextBoolean()
-                        item.time = Calendar.getInstance().time*/
-
-            /*            // bessers thread sleep
-            Handler(Looper.getMainLooper()).postDelayed({
-                item.incoming = false
-                item.accepted = Random.nextBoolean()
-                item.time = currentDateTime
-                datasetCalls = datasetCalls.sortedByDescending { it.time }
-                notifyDataSetChanged()
-            },500)
-        }*/
 
         }
     }

@@ -68,7 +68,6 @@ class ItemAdapterSingleChat(
             )
         }
         holder.binding.cvChatMessage.layoutParams = layoutParams
-        //holder.binding.cvChatMessage.requestLayout()
 
         // Message und Uhrzeit in TextViews schreiben
         holder.binding.tvMessage.text = messages[position].text
