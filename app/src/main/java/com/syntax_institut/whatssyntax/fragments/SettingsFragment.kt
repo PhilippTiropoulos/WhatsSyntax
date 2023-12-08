@@ -1,6 +1,5 @@
 package com.syntax_institut.whatssyntax.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +11,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.syntax_institut.whatssyntax.MainActivity
+import com.syntax_institut.whatssyntax.data.model.Profile
 import com.syntax_institut.whatssyntax.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -31,7 +31,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mainActivity = activity as MainActivity
-        val profile = mainActivity.profile
+        val profile = mainActivity.data.getProfile()
         binding.btSettingsSave.isEnabled = false
 
         // Werte des Users übergeben
@@ -60,9 +60,12 @@ class SettingsFragment : Fragment() {
         binding.tilSettingsTwo.editText?.addTextChangedListener(textWatcher)
 
         binding.btSettingsSave.setOnClickListener {
+
             // Daten setzen aus EditTexts
-            profile.name = binding.tilSettingsOne.editText?.text.toString()
-            profile.number = binding.tilSettingsTwo.editText?.text.toString()
+            val newProfileName = binding.tilSettingsOne.editText?.text.toString()
+            val newProfileNumber = binding.tilSettingsTwo.editText?.text.toString()
+            val newProfile = Profile(newProfileName, newProfileNumber, profile.image)
+            mainActivity.data.setProfile(newProfile)
             // Button wieder deaktivieren
             binding.btSettingsSave.isEnabled = false
             // Snackbar erstellen
@@ -76,7 +79,7 @@ class SettingsFragment : Fragment() {
             params.gravity = Gravity.TOP
             params.topMargin = 12
             snackBar.view.layoutParams = params
-            // Ausgabe
+            // Ausgabe der Snackbar
             snackBar.show()
         }
     }

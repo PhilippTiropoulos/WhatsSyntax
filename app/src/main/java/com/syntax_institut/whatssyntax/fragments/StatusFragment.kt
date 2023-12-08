@@ -26,10 +26,10 @@ class StatusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Dataset "rüberholen"
         val mainActivity = activity as MainActivity
+        val contactsWithStatus = mainActivity.data.getContacts().filter { it.status != null }
         // ItemAdapter für alle Kontakte mit Status
-        val itemAdapter = ItemAdapterStatus(mainActivity.contacts.filter { it.status != null })
+        val itemAdapter = ItemAdapterStatus(contactsWithStatus)
         binding.rvStatus.adapter = itemAdapter
         binding.rvStatus.layoutManager = LinearLayoutManager(context)
     }

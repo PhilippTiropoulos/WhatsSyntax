@@ -15,9 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     val data = Datasource()
     var chats = Datasource().getChats()
-    var calls = Datasource().getCalls()
-    var contacts = Datasource().getContacts()
-    var profile = Datasource().getProfile()
+
 
 //    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
