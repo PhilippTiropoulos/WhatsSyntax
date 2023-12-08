@@ -42,7 +42,7 @@ class Datasource {
         Contact("Lisa Baker", "111-000-9999", R.drawable.pp_06, null)
     )
 
-    val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
 
     private val callList = listOf(
         Call(contactList[0], incoming = true, true, dateFormat.parse("11.10.2023 15:30")),
@@ -71,6 +71,13 @@ class Datasource {
     private fun minutesAgo(minutes: Int): Calendar {
         return Calendar.getInstance().apply {
             add(Calendar.MINUTE, -minutes)
+        }
+    }
+
+    private fun daysAndHoursAgo(days: Int, hours: Int): Calendar {
+        return Calendar.getInstance().apply {
+            add(Calendar.DAY_OF_YEAR, -days)
+            add(Calendar.HOUR, -hours)
         }
     }
     private val chatList = listOf(
@@ -117,8 +124,8 @@ class Datasource {
             Message("Noch nicht, ich schaue nach.", true, minutesAgo(28))
         )),
         Chat(contactList[1], mutableListOf(
-            Message("Brauchst du etwas?", true, minutesAgo(40)),
-            Message("Nein, danke.", false, minutesAgo(35))
+            Message("Brauchst du etwas?", true, daysAndHoursAgo(1, 2)),
+            Message("Nein, danke.", false, daysAndHoursAgo(1, 1))
         ))
     )
 
