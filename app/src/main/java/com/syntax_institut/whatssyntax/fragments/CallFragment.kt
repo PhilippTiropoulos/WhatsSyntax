@@ -30,10 +30,18 @@ class CallFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // ItemAdapter für Anrufe
         val mainActivity = activity as MainActivity
-        itemAdapter = ItemAdapterCall(mainActivity.calls.sortedByDescending { it.time }.toMutableList())
+        val callList = mainActivity.data.getCalls().sortedByDescending { it.time }.toMutableList()
+        itemAdapter = ItemAdapterCall(callList)
         binding.rvFragmentCall.adapter = itemAdapter
         binding.rvFragmentCall.layoutManager = LinearLayoutManager(context)
 
 
+    }
+
+
+    // Nach Anruffenster nach ganz oben scrollen
+    override fun onResume() {
+        super.onResume()
+        binding.rvFragmentCall.scrollToPosition(0)
     }
 }
