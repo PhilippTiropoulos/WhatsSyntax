@@ -26,13 +26,12 @@ class DetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         super.onViewCreated(view, savedInstanceState)
+
         val mainActivity = activity as MainActivity
         val position = args.position
         val user = mainActivity.chats[position].contact
-        val filteredList = mainActivity.contacts.filter { it.status != null }
+        val filteredList = mainActivity.data.getContacts().filter { it.status != null }
         val userPos = filteredList.indexOf(user)
 
         // Daten setzen
@@ -47,7 +46,12 @@ class DetailFragment : Fragment() {
 
             // Nur Klickbar wenn Status vorhanden ist
             binding.userStatusTV.setOnClickListener {
-                findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToStatusDetailFragment(userPos))
+                // Zum Status des jeweiligen Kontaktes navigieren
+                findNavController().navigate(
+                    DetailFragmentDirections.actionDetailFragmentToStatusDetailFragment(
+                        userPos
+                    )
+                )
             }
             // anderenfalls lasse TV leer und Hintergrund transparent
         } else {
@@ -59,10 +63,6 @@ class DetailFragment : Fragment() {
         binding.materialToolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-
-        // Zum Status des jeweiligen Kontaktes navigieren
-
-
 
 
     }
