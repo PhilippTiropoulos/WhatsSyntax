@@ -37,114 +37,131 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/userPicIV"
-        android:layout_width="205dp"
-        android:layout_height="205dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="80dp"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/pp_01"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintWidth_percent="0.4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/circularImageView" />
 
-    <TextView
-        android:id="@+id/userNameTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="UserName"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/userPicIV"
-        app:layout_constraintStart_toStartOf="@+id/userPicIV"
-        app:layout_constraintTop_toBottomOf="@+id/userPicIV" />
 
-    <TextView
-        android:id="@+id/userNumberTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="0420432034234"
-        app:layout_constraintEnd_toEndOf="@+id/userNameTV"
-        app:layout_constraintStart_toStartOf="@+id/userNameTV"
-        app:layout_constraintTop_toBottomOf="@+id/userNameTV" />
-
-    <TextView
-        android:id="@+id/userStatusTV"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_background"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="Status"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:circularflow_defaultRadius="30dp"
-        app:circularflow_radiusInDP="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView3"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/userNumberTV" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="?attr/colorPrimaryContainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userStatusTV">
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
 
-        <ImageButton
-            android:id="@+id/newMessageBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPicIV">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            app:layout_constraintStart_toStartOf="@+id/userStatusTV"
+            app:layout_constraintTop_toBottomOf="@+id/userStatusTV">
+
+            <ImageButton
+                android:id="@+id/newMessageBTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00FFFFFF"
+                android:elevation="0dp"
+                android:padding="24dp"
+                android:src="@drawable/icon_chat"
+                app:tint="?attr/colorOnPrimaryContainer" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/userStatusTV"
+            app:layout_constraintStart_toStartOf="@+id/userStatusTV"
+            app:layout_constraintTop_toBottomOf="@+id/userStatusTV">
+
+            <ImageButton
+                android:id="@+id/callBTN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/icon_call"
+                app:tint="?attr/colorOnPrimaryContainer" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            app:layout_constraintEnd_toEndOf="@+id/userStatusTV"
+            app:layout_constraintTop_toBottomOf="@+id/userStatusTV">
+
+            <ImageButton
+                android:id="@+id/deleteBTN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/baseline_delete_24"
+                app:tint="?attr/colorOnPrimaryContainer" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/userStatusTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/rounded_background"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="Status"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:circularflow_defaultRadius="30dp"
+            app:circularflow_radiusInDP="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNumberTV" />
+
+        <TextView
+            android:id="@+id/userNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00FFFFFF"
-            android:elevation="0dp"
-            android:padding="24dp"
-            android:src="@drawable/icon_chat"
-            app:tint="?attr/colorOnPrimaryContainer" />
-    </androidx.cardview.widget.CardView>
+            android:layout_marginTop="12dp"
+            android:text="UserName"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="?attr/colorPrimaryContainer"
-        app:layout_constraintEnd_toStartOf="@+id/cardView3"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/userStatusTV">
-
-        <ImageButton
-            android:id="@+id/callBTN"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/icon_call"
-            app:tint="?attr/colorOnPrimaryContainer" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="?attr/colorPrimaryContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userStatusTV">
-
-        <ImageButton
-            android:id="@+id/deleteBTN"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/baseline_delete_24"
-            app:tint="?attr/colorOnPrimaryContainer" />
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/userNumberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="0420432034234"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameTV" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
