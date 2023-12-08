@@ -3,7 +3,6 @@ package com.syntax_institut.whatssyntax.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +36,7 @@ class SingleChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = activity as MainActivity
-        mainActivity.profile
+
         // Chat mit jeweiligem Kontakt zwischenspeichern
         val chat = mainActivity.chats[args.position]
 
@@ -104,6 +103,8 @@ class SingleChatFragment : Fragment() {
                 binding.recyclerView.scrollToPosition(newPosition)
                 // Eingabefeld leeren
                 binding.tilWriteMessage.editText?.text?.clear()
+                // Chats nach Uhrzeit sortieren
+                mainActivity.chats = mainActivity.chats.sortedByDescending { it.messages.last().timestamp.time }
             }
         }
 

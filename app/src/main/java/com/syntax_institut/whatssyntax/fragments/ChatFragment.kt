@@ -14,6 +14,7 @@ class ChatFragment : Fragment() {
 
     private lateinit var binding: FragmentChatBinding
     //private val args : DetailFragmentArgs by navArgs()
+    private lateinit var itemAdapter : ItemAdapterChat
 
 
     override fun onCreateView(
@@ -30,7 +31,8 @@ class ChatFragment : Fragment() {
 
         // ItemAdapter für Chats
         val mainActivity = activity as MainActivity
-        val itemAdapter = ItemAdapterChat(mainActivity.chats)
+        val sortedChats = mainActivity.chats.sortedByDescending { it.messages.last().timestamp.time }
+        itemAdapter = ItemAdapterChat(sortedChats)
         binding.rvChatFragment.adapter = itemAdapter
         binding.rvChatFragment.layoutManager = LinearLayoutManager(context)
 

@@ -30,28 +30,47 @@
 
         <TextView
             android:id="@+id/tvChatName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textColor="?attr/colorOnBackground"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
             app:layout_constraintBottom_toTopOf="@+id/tvChatMessage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivChatPicture"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Max Mustermann" />
 
         <TextView
             android:id="@+id/tvChatMessage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="?attr/colorOnBackground"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvDatum"
             app:layout_constraintStart_toEndOf="@+id/ivChatPicture"
             app:layout_constraintTop_toBottomOf="@+id/tvChatName"
-            tools:text="+49123498765" />
+            tools:text="Message" />
+
+        <TextView
+            android:id="@+id/tvDatum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="TextView"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
