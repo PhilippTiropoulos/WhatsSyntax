@@ -27,14 +27,13 @@ class StatusDetailFragment : Fragment() {
 
         val mainActivity = activity as MainActivity
         val position = args.position
-        val status = mainActivity.contacts.filter { it.status != null }[position]
+        val contact = mainActivity.data.getContacts().filter { it.status != null }[position]
 
         // Views füllen
-        binding.ivContacePic.setImageResource(status.image)
-        status.status?.let { binding.statusPicTV.setImageResource(it.img) }
-        binding.tvChatDetailName.text = status.name
-        binding.tvStatusDetail.text = status.status?.text
-
+        binding.ivContacePic.setImageResource(contact.image)
+        contact.status?.let { binding.statusPicTV.setImageResource(it.img) }
+        binding.tvChatDetailName.text = contact.name
+        binding.tvStatusDetail.text = contact.status?.text
         // Zurück navigieren
         binding.btnBackArrow.setOnClickListener {
             findNavController().navigateUp()
